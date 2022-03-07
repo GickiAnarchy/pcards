@@ -1,4 +1,6 @@
 #deck.py
+from joker_card import Joker
+
 class Deck:
     """ Class of 52 Card() to create a full deck."""
     def __init__(self):
@@ -10,7 +12,15 @@ class Deck:
                 crd = Card(i, j)
                 self.cards.append(crd)
         self.shuffle()
-
+        
+    def createDeckWithJokers(self):
+        self.createDeck()
+        redjr = Joker("red")
+        blackjr = Joker("black")
+        self.cards.append(redj)
+        self.card.append(blackj)
+        self.shuffle()
+        
     def shuffle(self):
         if len(self.cards) == 0:
             return

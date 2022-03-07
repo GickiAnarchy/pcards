@@ -1,10 +1,13 @@
 #deck.py
-from joker_card import Joker
+from .joker_card import Joker
+from .cards import Card
 
 class Deck:
     """ Class of 52 Card() to create a full deck."""
     def __init__(self):
         self.cards = []
+        self.heldcards = []
+
     
     def createDeck(self):
         for i in range(2, 15):
@@ -28,17 +31,24 @@ class Deck:
         print(f"Shuffling {str(len(self.cards))} cards..")
 
     def drawCard(self):
+        if len(self.heldcards) > 0:
+            self.heldcards.clear()
+            print("Removed old held cards.")
         if len(self.cards) == 0:
             return
         pulled = self.cards.pop()
         print(f"Pulled card:\n{pulled}")
-        return
+        self.heldcards.append(pulled)
+        return self.heldcards
     
     def drawHand(self, amount):
-        self.hand = []
+        if len(self.heldcards) > 0:
+            self.heldcards.clear()
+            print("Removed old held cards.")
         while amount > 0:
-            self.hand.append(self.drawCard())
+            self.heldcards.append(self.drawCard())
         print(f"Dealt a hand of {str(amount)} cards")
-        return self.hand
+        return self.heldcards    
     
+
     

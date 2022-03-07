@@ -1,6 +1,6 @@
-from cards import Card
-from deck import Deck
-from joker_card import Joker
+from .cards import *
+from .deck import *
+from .joker_card import *
 
 
-__all__ = ["Card", "DecK", "Joker"]
+__all__ = ["Card", "Deck", "Joker"]

@@ -1,5 +1,5 @@
 #joker_card.py
-from cards import Card
+from .cards import Card
 
 class Joker(Card):
     """The Joker card which can have many unique rules according to the game."""
@@ -9,8 +9,10 @@ class Joker(Card):
         self.suit = 4
         if col == "red":
             self.value = 16
+            self.imagename = "red_joker.png"
         elif col == "black":
             self.value = 17
+            self.imagename = "black_joker.png"
         
 
     def __repr__(self):

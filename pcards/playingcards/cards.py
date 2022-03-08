@@ -1,13 +1,15 @@
 #cards.py
 import os
 import random
-from tkinter import *
-from PIL import Image, ImageTK 
+import tkinter
+from PIL import Image, ImageTk
+
+
 
 class Card:
     """Single playing card class"""
 
-    imagepath = r"../images/"
+    imagepath = "images/"
 
     suits = ["spades", "hearts", "diamonds", "clubs"]
 
@@ -18,7 +20,6 @@ class Card:
         self.value = v
         self.suit = s
         self.imagename = f"{self.suits[self.suit]}_{self.values[self.value]}.png"
-        self.img = self.loadImage()
 
 
     def __lt__(self, c2):
@@ -50,9 +51,5 @@ class Card:
         self.suits[self.suit]
         return v
     
-    def loadImage(self):
-        image = Image.open(f"{self.imagepath}{self.imagename}")
-        resize_image = image.resize((300, 525) , Image.ANTIALIAS)
-        imgL = ImageTk.PhotoImage(resize_image)
-        return imgL
-
+    def imagePath(self):
+        return f"{self.imagepath}{self.imagename}"

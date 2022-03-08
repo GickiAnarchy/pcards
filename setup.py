@@ -8,6 +8,7 @@ setup(
    author='GickiAnarchy',
    author_email='fatheranarchy@programmer.net',
    url='https://github.com/GickiAnarchy/pcards',
+   scripts = ['bin/pcardsbin']
    license='NONE',
    description='Basic Playing Card(s) package',
    long_description=open('README.txt').read(),

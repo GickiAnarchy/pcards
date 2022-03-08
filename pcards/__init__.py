@@ -1,8 +1,5 @@
-#__init__.py
-#from .playingcards import *
-from .playingcards.cards import *
-from .playingcards.deck import *
-from .playingcards.joker_card import *
+#pcards.__init__.py
 
 
-#__all__ = ["Card", "Deck", "Joker"]
+
+print("import pcards")

@@ -53,3 +53,7 @@ class Deck:
             self.heldcards.append(self.drawCard())
         print(f"Dealt a hand of {str(amount)} cards")
         return self.heldcards
+    
+    @property
+    def left(self):
+        return str(len(self.cards))

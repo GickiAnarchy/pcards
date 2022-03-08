@@ -53,3 +53,7 @@ class Card:
     
     def imagePath(self):
         return f"{self.imagepath}{self.imagename}"
+        
+    @property
+    def getImageName():
+        return self.imagename        

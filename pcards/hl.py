@@ -1,6 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk 
-from playingcards import *
+import playingcards
 from highlowtk import *
 
 hl = highcardTk()

@@ -1,5 +1,5 @@
 #pcards.__init__.py
 
-import playingcars
+from .playingcards import *
 
 print("import pcards")

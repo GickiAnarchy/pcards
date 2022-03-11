@@ -42,6 +42,8 @@ class highcardTk(tk.Tk):
         self.cleft.set(self.deck.left)
         self.cd = self.deck.drawCard()
         self.tv.set("Card Drawn")
+        self.c1.configure(image = self.back)
+        self.c1.image = self.back
 
     def showc(self):
         self.tv.set(repr(self.cd))

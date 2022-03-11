@@ -1,13 +1,15 @@
 #cards.py
 import os
 import random
-import tkinter as tk
-from PIL import Image, ImageTk
+
 
 image_folder = os.path.abspath(os.path.join(os.path.dirname(__file__),"..", "images"))
 
+
 class Card():
     """Single playing card class"""
+
+    back = image_folder + "/back.png"
 
     suits = ["spades", "hearts", "diamonds", "clubs"]
 
@@ -19,6 +21,8 @@ class Card():
         self.suit = s
         self.name = f"{self.suits[self.suit]}_{self.values[self.value]}"
         self.imagename = f"{self.name}.png"
+        self.image = image_folder + f"/{self.imagename}"
+        self.hidden = True
 
 
     def __lt__(self, c2):
@@ -50,20 +54,10 @@ class Card():
         self.suits[self.suit]
         return v
 
-    @classmethod
-    def getBackImage(cls):
-        cback = Image.open(image_folder + "/back.png")
-        resized = cback.resize((200, 360))
-        cls.back = ImageTk.PhotoImage(resized)
-        return cls.back
 
-
-    def getImage(self):
-        tkimage = Image.open(image_folder + f"/{self.imagename}")
-        resized = tkimage.resize((200, 360))
-        self.image = ImageTk.PhotoImage(resized)
-    
     @property
     def Image(self):
-        self.getImage()
-        return self.image
+        if self.hidden:
+            return self.back
+        else:
+            return self.image

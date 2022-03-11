@@ -1,8 +1,8 @@
 #deck.py
-from .joker_card import Joker
-from .cards import Card
+from cards import Card 
+from joker_card import Joker
 from random import shuffle
-from PIL import Image, ImageTk
+
 
 class Deck:
     """ Class of 52 Card() to create a full deck."""
@@ -11,19 +11,19 @@ class Deck:
         self.images = []
         self.shuffled = False
 
-
     def createDeck(self):
         for i in range(2, 15):
             for j in range(4):
                 crd = Card(j, i)
                 self.cards.append(crd)
+        self.Shuffle()
         
     def createDeckWithJokers(self):
         self.createDeck()
         redjr = Joker("red")
         blackjr = Joker("black")
         self.cards.append(redj)
-        self.card.append(blackj)
+        self.cards.append(blackj)
         self.Shuffle()
         
     def Shuffle(self):

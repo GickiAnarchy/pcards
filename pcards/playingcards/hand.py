@@ -1,14 +1,13 @@
 #hand.py
 import random
-from playingcards import Card
+from cards import Card
 
 class Hand():
     """A players hand of playing cards"""
-    def __init__(self, dealer = False):
-        self.dealer = dealer
+    def __init__(self):
         self.cards = []
-    
-    
+
+
     def add_card(self, card: Card):
         self.cards.append(card)
     

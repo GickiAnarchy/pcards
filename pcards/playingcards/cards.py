@@ -4,14 +4,10 @@ import random
 import tkinter as tk
 from PIL import Image, ImageTk
 
-image_folder = os.path.abspath(os.path.join(os.path.dirname(__file__),
-
-"..", "images"))
+image_folder = os.path.abspath(os.path.join(os.path.dirname(__file__),"..", "images"))
 
 class Card():
     """Single playing card class"""
-
-    imagepath = "images/"
 
     suits = ["spades", "hearts", "diamonds", "clubs"]
 
@@ -21,7 +17,8 @@ class Card():
         """suit + value are ints"""
         self.value = v
         self.suit = s
-        self.imagename = f"{self.suits[self.suit]}_{self.values[self.value]}.png"
+        self.name = f"{self.suits[self.suit]}_{self.values[self.value]}"
+        self.imagename = f"{self.name}.png"
 
 
     def __lt__(self, c2):
@@ -52,20 +49,21 @@ class Card():
         " of " + \
         self.suits[self.suit]
         return v
-    
-    def imagePath(self):
-        return f"{self.imagepath}{self.imagename}"
-    
-    def backImage(self):
-        return f"{self.imagepath}back.png"
-
 
     @classmethod
     def getBackImage(cls):
-        cls.back = ImageTk.PhotoImage(Image.open(image_folder + "/back.png"))
+        cback = Image.open(image_folder + "/back.png")
+        resized = cback.resize((200, 360))
+        cls.back = ImageTk.PhotoImage(resized)
         return cls.back
-    
+
+
+    def getImage(self):
+        tkimage = Image.open(image_folder + f"/{self.imagename}")
+        resized = tkimage.resize((200, 360))
+        self.image = ImageTk.PhotoImage(resized)
     
     @property
-    def getImageName():
-        return self.imagename        
+    def Image(self):
+        self.getImage()
+        return self.image

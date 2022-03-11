@@ -9,7 +9,7 @@ class Deck:
     def __init__(self):
         self.cards = []
         self.images = []
-
+        self.shuffled = False
 
 
     def createDeck(self):
@@ -17,7 +17,6 @@ class Deck:
             for j in range(4):
                 crd = Card(j, i)
                 self.cards.append(crd)
-        self.Shuffle()
         
     def createDeckWithJokers(self):
         self.createDeck()
@@ -31,15 +30,22 @@ class Deck:
         if len(self.cards) == 0:
             return
         shuffle(self.cards)
+        self.shuffled = True
         print(f"Shuffling {str(len(self.cards))} cards..")
 
     def drawCard(self):
-        if len(self.cards) <= 0:
+        if self.isEmpty:
             return
         pulled = self.cards.pop()
         print(f"Pulled card:\n{pulled}")
         return pulled
 
+    @property
+    def isEmpty(self):
+        if len(self.cards) >= 1:
+            return False
+        else:
+            return True 
 
     @property
     def left(self):

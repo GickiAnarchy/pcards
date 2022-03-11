@@ -1,4 +1,5 @@
-#tkcards.py
+#Highcard.py
+#To replace highlowtk.py
 import tkinter as tk
 from PIL import Image, ImageTk 
 from playingcards import *

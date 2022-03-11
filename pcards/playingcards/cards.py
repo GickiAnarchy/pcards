@@ -1,12 +1,14 @@
 #cards.py
 import os
 import random
-import tkinter
+import tkinter as tk
 from PIL import Image, ImageTk
 
+image_folder = os.path.abspath(os.path.join(os.path.dirname(__file__),
 
+"..", "images"))
 
-class Card:
+class Card():
     """Single playing card class"""
 
     imagepath = "images/"
@@ -53,7 +55,17 @@ class Card:
     
     def imagePath(self):
         return f"{self.imagepath}{self.imagename}"
-        
+    
+    def backImage(self):
+        return f"{self.imagepath}back.png"
+
+
+    @classmethod
+    def getBackImage(cls):
+        cls.back = ImageTk.PhotoImage(Image.open(image_folder + "/back.png"))
+        return cls.back
+    
+    
     @property
     def getImageName():
         return self.imagename        

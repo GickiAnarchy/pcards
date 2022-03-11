@@ -16,9 +16,13 @@ class highcardTk(tk.Tk):
         self.deck = Deck()
         self.deck.createDeck()
         self.deck.Shuffle()
+        self.back = Card.getBackImage()
         self.playing = False
+        self.frame = tk.Frame(self, width = 601, height = 500)
+        self.frame.pack(fill = None, expand = False)
         self.tv = tk.StringVar()
-        self.tv.set("....")
+        self.cd = None
+        self.tv.set(repr(self.cd))
         self.lbl = tk.Label(self, textvariable = self.tv)
         self.lbl.pack(side=tk.TOP)
         self.cleft = tk.StringVar()
@@ -29,6 +33,9 @@ class highcardTk(tk.Tk):
         draw_button.pack(side=tk.BOTTOM, padx=(0, 20), pady=(0, 20))
         show_button = tk.Button(self, text ="Show Card", command=self.showc)
         show_button.pack(side=tk.BOTTOM, padx=(0, 20), pady=(0, 20))
+        self.c1 = tk.Label(self.frame, image = self.back)
+        self.c1.grid(row = 0, column = 0)
+        
 
 
     def drawc(self):
@@ -38,6 +45,13 @@ class highcardTk(tk.Tk):
 
     def showc(self):
         self.tv.set(repr(self.cd))
+        self.c1img = ImageTk.PhotoImage(Image.open(self.cd.imagePath()))
+        #resize_image = c1img.resize((200, 340) , Image.ANTIALIAS)
+        #img = ImageTk.PhotoImage(resize_image)
+        self.imgs[repr(self.cd)] = self.c1img
+        self.c1.configure(image = self.c1img)
+        self.c1.image = self.c1img
+        
 
 
 if __name__ == "__main__":
